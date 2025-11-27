@@ -4,8 +4,8 @@
   "eslint.enable": false,
   "biome.enabled": true,
   "editor.codeActionsOnSave": {
-    "quickfix.biome": "explicit",
-    "source.fixAll.biome": "explicit",
-    "source.organizeImports.biome": "explicit"
+    "quickfix.biome": "always",
+    "source.fixAll.biome": "always",
+    "source.organizeImports.biome": "always"
   }
 }

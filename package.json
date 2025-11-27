@@ -9,6 +9,7 @@
     "lint": "biome lint .",
     "check:types": "tsc",
     "check:format": "biome check .",
+    "fix:format": "biome check --write .",
     "check:unused": "knip",
     "check-all": "yarn check:types && yarn check:format && yarn check:unused"
   },

@@ -6,9 +6,9 @@
  */
 export const moveMapIn2048Rule = (
   map: Map2048,
-  direction: Direction,
+  direction: Direction
 ): MoveResult => {
-  if (!validateMapIsNByM(map)) throw new Error("Map is not N by M");
+  if (!validateMapIsNByM(map)) throw new Error('Map is not N by M');
 
   const rotatedMap = rotateMapCounterClockwise(map, rotateDegreeMap[direction]);
 
@@ -27,7 +27,7 @@ const validateMapIsNByM = (map: Map2048) => {
 
 const rotateMapCounterClockwise = (
   map: Map2048,
-  degree: 0 | 90 | 180 | 270,
+  degree: 0 | 90 | 180 | 270
 ): Map2048 => {
   const rowLength = map.length;
   const columnLength = map[0].length;
@@ -39,23 +39,23 @@ const rotateMapCounterClockwise = (
       return Array.from({ length: columnLength }, (_, columnIndex) =>
         Array.from(
           { length: rowLength },
-          (_, rowIndex) => map[rowIndex][columnLength - columnIndex - 1],
-        ),
+          (_, rowIndex) => map[rowIndex][columnLength - columnIndex - 1]
+        )
       );
     case 180:
       return Array.from({ length: rowLength }, (_, rowIndex) =>
         Array.from(
           { length: columnLength },
           (_, columnIndex) =>
-            map[rowLength - rowIndex - 1][columnLength - columnIndex - 1],
-        ),
+            map[rowLength - rowIndex - 1][columnLength - columnIndex - 1]
+        )
       );
     case 270:
       return Array.from({ length: columnLength }, (_, columnIndex) =>
         Array.from(
           { length: rowLength },
-          (_, rowIndex) => map[rowLength - rowIndex - 1][columnIndex],
-        ),
+          (_, rowIndex) => map[rowLength - rowIndex - 1][columnIndex]
+        )
       );
   }
 };
@@ -80,13 +80,13 @@ const moveRowLeft = (row: Cell[]): { result: Cell[]; isMoved: boolean } => {
         return { result: [...acc.result, acc.lastCell], lastCell: cell };
       }
     },
-    { lastCell: null, result: [] },
+    { lastCell: null, result: [] }
   );
 
   const result = [...reduced.result, reduced.lastCell];
   const resultRow = Array.from(
     { length: row.length },
-    (_, i) => result[i] ?? null,
+    (_, i) => result[i] ?? null
   );
 
   return {
@@ -111,7 +111,7 @@ const revertDegreeMap: DirectionDegreeMap = {
 
 type Cell = number | null;
 export type Map2048 = Cell[][];
-type Direction = "up" | "left" | "right" | "down";
+type Direction = 'up' | 'left' | 'right' | 'down';
 type RotateDegree = 0 | 90 | 180 | 270;
 type DirectionDegreeMap = Record<Direction, RotateDegree>;
 type MoveResult = { result: Map2048; isMoved: boolean };
