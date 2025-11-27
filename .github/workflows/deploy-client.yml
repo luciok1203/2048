@@ -29,3 +29,6 @@ jobs:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           AWS_REGION: ap-northeast-2
+        run: |
+          aws s3 sync ./dist s3://{s3 이름} --delete
+          aws cloudfront create-invalidation --distribution-id {Cloudfront 이름} --paths "/*"\
